@@ -4,8 +4,9 @@
 #include <INIReader.h>
 #include <core/string.hpp>
 #include <core/span.hpp>
+#include <core/validable.hpp>
 
-class Ini: private INIReader{
+class Ini: private INIReader, public Validable{
     using Super = INIReader;
 public:
     Ini(StringView buffer);
@@ -19,6 +20,10 @@ public:
     Ini(ConstSpan<byte> buffer);
 
     int ParseError() const;
+
+    bool IsValid()const override{
+        return ParseError() == 0;
+    }
 
     String Get(const String& section, const String& name, const String& default_value = String::Empty) const;
 
