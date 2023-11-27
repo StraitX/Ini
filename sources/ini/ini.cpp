@@ -1,11 +1,11 @@
 #include "ini.hpp"
 
-Ini::Ini(StringView filename):
-	Super(std::string(filename.Data(), filename.Size()))
+Ini::Ini(StringView content):
+	Ini(content.Data(), content.Size())
 {}
 
-Ini::Ini(const String& filename):
-	Super(filename)
+Ini::Ini(const String& content):
+	Ini(content.Data(), content.Size())
 {}
 
 Ini::Ini(const char* buffer, size_t buffer_size):

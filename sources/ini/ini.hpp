@@ -8,9 +8,9 @@
 class Ini: private INIReader{
     using Super = INIReader;
 public:
-    Ini(StringView filename);
+    Ini(StringView buffer);
 
-    Ini(const String& filename);
+    Ini(const String& buffer);
 
     Ini(const char* buffer, size_t buffer_size);
 
